@@ -45,7 +45,7 @@ r = move(100, 100, 60, math.pi / 6)
 def quadratic(a, b, c):
     if not isinstance(a * b * c, (float, int)):
         raise TypeError("quadratic must be a float or int")
-    q = b**2 - 4 * a * c
+    q = b ** 2 - 4 * a * c
     if q < 0:
         print('no solution')
     elif q == 0:
@@ -76,12 +76,13 @@ def add_end(L=None):
 def calc(*numbers):
     sum = 0
     for n in numbers:
-        sum += n**2
+        sum += n ** 2
     return sum
 
 
 nums = [1, 2, 3]
 calc(*nums)
+
 
 # 关键字参数
 # 允许你传入0个或任意个含参数名的参数，这些关键字参数在函数内部自动组装为一个dict
@@ -96,6 +97,7 @@ person('Bob', 35, city='Beijing')
 
 extra = {'city': 'Beijing', 'job': 'Engineer'}
 person('Bob', 35, **extra)
+
 
 # 命名关键字参数
 # 函数的调用者可以传入任意不受限制的关键字参数, *后面的参数被视为命名关键字参数
@@ -191,3 +193,39 @@ def move(n, a, b, c):
 
 
 move(3, 'A', 'B', 'C')
+
+
+# 返回函数
+def lazy_sum(*args):
+    def sum():
+        ax = 0
+        for n in args:
+            ax = ax + n
+        return ax
+
+    return sum
+
+
+f = lazy_sum(1, 2, 3, 4, 5)
+print(f())
+
+
+# 闭包
+def count():
+    fs = []
+
+    def f(j):
+        def g():
+            return j * j
+
+        return g
+
+    for i in range(1, 4):
+        fs.append(f(i))
+    return fs
+
+
+f1, f2, f3 = count()
+print(f1())
+print(f2())
+print(f3())
