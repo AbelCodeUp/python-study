@@ -8,7 +8,7 @@
 print(84.5 / (1.75 ** 2))
 
 height = 1.75
-weight = 83.8
+weight = 83.3
 
 bmi = weight / (height ** 2)
 print('bmi = %.f' % bmi)
