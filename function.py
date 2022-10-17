@@ -229,3 +229,26 @@ f1, f2, f3 = count()
 print(f1())
 print(f2())
 print(f3())
+
+# 一个函数可以返回一个计算结果，也可以返回一个函数。
+
+# 返回一个函数时，牢记该函数并未执行，返回函数中不要引用任何可能会变化的变量。
+
+def createCounter():
+    x = 0
+    def counter():
+        nonlocal x # 如果对外层变量赋值，由于Python解释器会把x当作函数fn()的局部变量，它会报错：
+        x = x + 1
+        return x
+    return counter
+
+
+counterA = createCounter()
+print(counterA(), counterA(), counterA(), counterA(), counterA())
+
+# lambda函名函数
+def is_odd(n):
+    return n % 2 == 1
+
+L = list(filter(lambda n: n % 2 == 1, range(1, 20)))
+print(L)

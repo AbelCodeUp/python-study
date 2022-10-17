@@ -5,10 +5,8 @@
 # else:
 #     print('00后')
 
-print(84.5 / (1.75 ** 2))
-
-height = 1.75
-weight = 83.3
+height = 1.76
+weight = 75
 
 bmi = weight / (height ** 2)
 print('bmi = %.f' % bmi)
